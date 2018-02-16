@@ -8,11 +8,15 @@
 
 static t_axPacket tx_packet;
 
-void axpacket_prepare(uint8_t ax_id, uint8_t instruction)
+void axpacket_prepare(uint8_t ax_id, uint8_t instruction, uint8_t data_addr)
 {
 	tx_packet.ax_id = ax_id;
 	tx_packet.instruction = instruction;
 	tx_packet.length = 0;
+	
+	//parameter0 = strarting adress of 
+	//location where data is to be written
+	axpacket_put_byte(data_addr);
 }
 
 void axpacket_put_byte(uint8_t byte)
@@ -41,7 +45,7 @@ void axpacket_end(void)
 		checksum += tx_packet.parameters[i];
 	}
 	
-	tx_packet.checksum = ~(checksum);
+	tx_packet.checksum = (uint8_t) (~(checksum));
 	
 	usart0_axpacket_send(&tx_packet);
 }

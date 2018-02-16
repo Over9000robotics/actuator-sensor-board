@@ -7,7 +7,7 @@
 
 #define CLOCK_FQ 16000000
 
-void USART0_init(unsigned int baud)
+void USART0_init(uint32_t baud)
 {
 	unsigned int temp_baud = 0;
 	
@@ -44,8 +44,8 @@ void usart0_axpacket_send(t_axPacket* packet)
 	USART0_transmit(packet->ax_id);
 	USART0_transmit(packet->length);
 	USART0_transmit(packet->instruction);
-	int i;
 	
+	int i;
 	for(i=0; i<packet->length-2; i++)
 	{
 		USART0_transmit(packet -> parameters[i]);

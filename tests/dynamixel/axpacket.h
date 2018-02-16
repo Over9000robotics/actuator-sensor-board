@@ -17,7 +17,7 @@ typedef struct t_axPacket
 	uint8_t checksum;
 }t_axPacket;
 
-void axpacket_prepare(uint8_t ax_id, uint8_t instruction);
+void axpacket_prepare(uint8_t ax_id, uint8_t instruction, uint8_t data_addr);
 void axpacket_put_byte(uint8_t byte);
 void axpacket_put_word(uint16_t word);
 void axpacket_end(void);
