@@ -80,7 +80,7 @@ OBJDIR = build
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = ./ax12.c ./axpacket.c ./uart.c
+SRC = ./ax12.c ./axpacket.c ./usart0.c
 
 # Libs here
 #SRC += ./libs/can/can_wrapper.c ./libs/dynamixel/dynamixel.c

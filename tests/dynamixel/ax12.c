@@ -5,11 +5,10 @@
 
 #include "axpacket.h"
 #include "ax12.h"
+#include "usart0.h"
 
 #define CLOCK_FQ 16000000
 
-void USART0_init(unsigned int baud);
-void USART0_transmit(unsigned char data);
 
 int main(void)
 {
@@ -29,7 +28,7 @@ int main(void)
 	
 	USART0_transmit(0xFF);
 	USART0_transmit(0xFF);
-	USART0_transmit(0x00);
+	USART0_transmit(BROADCASTING_ID);
 	USART0_transmit(0x07);
 	USART0_transmit(0x03);
 	USART0_transmit(0x1E);
@@ -37,7 +36,7 @@ int main(void)
 	USART0_transmit(0x02);
 	USART0_transmit(0x00);
 	USART0_transmit(0x02);
-	USART0_transmit(0xD3);
+	USART0_transmit(0xD5);
 	
 	while(1)
 	{
@@ -54,6 +53,19 @@ int main(void)
 	
 	_delay_ms(1500);
 	* */
+	
+	_delay_ms(1000);
+	USART0_transmit(0xFF);
+	USART0_transmit(0xFF);
+	USART0_transmit(BROADCASTING_ID);
+	USART0_transmit(0x07);
+	USART0_transmit(0x03);
+	USART0_transmit(0x1E);
+	USART0_transmit(0x00);
+	USART0_transmit(0x02);
+	USART0_transmit(0x00);
+	USART0_transmit(0x02);
+	USART0_transmit(0xD5);
 	}	
 	return 0;
 }
