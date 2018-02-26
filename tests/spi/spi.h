@@ -3,7 +3,8 @@
 #ifndef SPI_H_
 #define SPI_H_
 
-void SPI_SlaveInit(void);
-char SPI_SlaveReceive(void);
+void SPI_slave_init(void);
+char SPI_receive(void);
+void SPI_transmit(char byte);
 
 #endif

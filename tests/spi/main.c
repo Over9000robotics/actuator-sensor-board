@@ -9,13 +9,14 @@
 int main(void)
 {
 	USART0_init(57600);
-	SPI_SlaveInit();
+	SPI_slave_init();
 	DDRB = 0xFF;
 	unsigned char received_byte = 0;
 	
 	while(1)
 	{
-		received_byte = SPI_SlaveReceive();
+		received_byte = SPI_receive();
+		SPI_transmit(0xFE);
 		USART0_transmit(received_byte);
 		_delay_ms(500);
 	}
