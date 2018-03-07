@@ -1,5 +1,5 @@
 # actuator-sensor-board
-Software for AVR microcontroler __at90can128__ which controls actuators and reads output from sensors, and communicates with RPI via SPI
+Software for AVR microcontroler __at90can128__ which controls actuators and reads output from sensors, and communicates with RPI via UART od SPI (configurable)
 
 ### Microcontroler AT90CAN128 datasheet:
 
