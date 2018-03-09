@@ -25,7 +25,7 @@ int main(void)
 	axpacket_put_byte(1);
 	axpacket_end();
 	*/
-	
+/*	
 	USART0_transmit(0xFF);
 	USART0_transmit(0xFF);
 	USART0_transmit(BROADCASTING_ID);
@@ -37,6 +37,17 @@ int main(void)
 	USART0_transmit(0x00);
 	USART0_transmit(0x02);
 	USART0_transmit(0xD5);
+*/
+	
+	//set ID to 1
+	USART0_transmit(0xFF);
+	USART0_transmit(0xFF);
+	USART0_transmit(BROADCASTING_ID);
+	USART0_transmit(0x04);
+	USART0_transmit(0x03);
+	USART0_transmit(0x03);
+	USART0_transmit(0x01);
+	USART0_transmit(0xF6);
 	
 	while(1)
 	{
@@ -58,14 +69,11 @@ int main(void)
 	USART0_transmit(0xFF);
 	USART0_transmit(0xFF);
 	USART0_transmit(BROADCASTING_ID);
-	USART0_transmit(0x07);
+	USART0_transmit(0x04);
 	USART0_transmit(0x03);
-	USART0_transmit(0x1E);
-	USART0_transmit(0x00);
-	USART0_transmit(0x02);
-	USART0_transmit(0x00);
-	USART0_transmit(0x02);
-	USART0_transmit(0xD5);
+	USART0_transmit(0x03);
+	USART0_transmit(0x01);
+	USART0_transmit(0xF6);
 	}	
 	return 0;
 }

@@ -4,7 +4,7 @@
 #include <util/delay.h>
 
 #include "axpacket.h"
-#include "uart.h"
+#include "usart0.h"
 
 static t_axPacket tx_packet;
 

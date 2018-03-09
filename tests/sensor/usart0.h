@@ -15,6 +15,7 @@
 void USART0_init(uint32_t baud);
 
 void USART0_transmit(unsigned char data);
+unsigned char USART0_receive(void);
 
 /*
 void usart0_axpacket_send(t_axPacket* packet);

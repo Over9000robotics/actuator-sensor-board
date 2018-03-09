@@ -8,6 +8,7 @@ int main(void)
 	sei();
 	
 	DDRB = 0xFF;
+	//sbit(DDRB, 1);	
 	
 	while(1)
 	{
@@ -18,3 +19,4 @@ int main(void)
 	}	
 	return 0;
 }
+

@@ -19,7 +19,7 @@ void USART0_init(uint32_t baud)
 
 	UCSR0A |= (1 << U2X0);
 
-	UCSR0B &= ~(1 << RXEN0);	// Disable RX
+	UCSR0B |= (1 << RXEN0);	// Enable RX
 	
 	DDRE |= (1 << PE1);			// Set TX as output
 	DDRE &= ~(1 << PE0);		// Set RX as input
@@ -45,6 +45,14 @@ void USART0_transmit(unsigned char data)
 
 	UDR0 = data; //Put data into buffer, sends the data
 }
+
+unsigned char USART0_receive(void)
+{
+	while ( ! (UCSR0A & (1<<RXC0)));
+
+	return UDR0;
+}
+
 
 /*
 void usart0_axpacket_send(t_axPacket* packet)

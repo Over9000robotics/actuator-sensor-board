@@ -15,9 +15,9 @@ int main(void)
 	
 	while(1)
 	{
-		received_byte = SPI_receive();
-		SPI_transmit(0xFE);
-		USART0_transmit(received_byte);
+		//received_byte = SPI_receive();
+		//SPI_transmit(0xFE);
+		USART0_transmit(0xFE);
 		_delay_ms(500);
 	}
 	

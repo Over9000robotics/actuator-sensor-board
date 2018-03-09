@@ -4,6 +4,7 @@
 #include <util/delay.h>
 
 #include "usart0.h"
+#include "sensor.h"
 
 #define setbit(port, bit) (port) |= (1 << (bit))
 #define clearbit(port, bit) (port) &= ~(1 << (bit))
@@ -28,23 +29,17 @@ int main(void)
 	DDRG |= (0 << PG2);
 	PORTG = 0;
 	
+	sensors_init();
 	//sbit(DDRB, 1);	
 	
 	while(1)
 	{
-		sens = PINA & (1 << PA2);
+		update_sensor_status();
+		read_packet();
 		
-		if(sens > 0)
-		{
-			PORTB = 0xFF;
-		}
-		else
-			PORTB = 0;
-			
-		USART0_transmit(PINA);
-		//_delay_ms(1000);
+		//send_sensor_status();
+		
+		//_delay_ms(100);
 	}	
 	return 0;
 }
-
-
