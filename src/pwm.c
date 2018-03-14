@@ -44,15 +44,11 @@ void pbr_pwm_set(uint8_t brushless_num, uint8_t procent)
 	if(brushless_num == BR_HEAD)
 	{
 		register_16_write(head_brushless, pwm_val);
-	//	OCR3CH = pwm_val >> 8;
-	//	OCR3CL = pwm_val;
 	}
 
 	else if(brushless_num == BR_SECONDARY)
 	{
 		register_16_write(second_brushless, pwm_val);
-		//OCR3BH = pwm_val >> 8;
-		//OCR3BL = pwm_val;
 	}
 }
 
@@ -65,8 +61,8 @@ void servo_pwm_set(int8_t servo_num, uint8_t degrees)
 	uint32_t pwm_val = 0;
 
 	//	16-bit pwm timers
-	//500  -> 0.5 ms -> position LEFT
-	//1500 -> 1.5 ms -> position RIGHT
+	// 500  -> 0.5 ms -> position LEFT
+	// 1500 -> 1.5 ms -> position RIGHT
 	
 	if(servo_num == SERVO1)
 	{
