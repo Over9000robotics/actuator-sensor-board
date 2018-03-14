@@ -31,7 +31,7 @@ void servo_set_position(int8_t servo_num, int8_t degrees)
 	if(degrees > 180 || degrees < 0)
 		return;
 	
-	if(!servo_limit_check)
+	if(!servo_limit_check(servo_num, degrees))
 		return;
 		
 	servo_pwm_set(servo_num, degrees);

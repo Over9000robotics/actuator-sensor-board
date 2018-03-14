@@ -92,29 +92,16 @@ void servo_pwm_set(int8_t servo_num, uint8_t degrees)
  */
 void timer1_init(void)
 {
-	//Timer 1
-	/*
-	//FAST PWM, top = 0xFF
-
-	TCCR1A |= (1 << WGM10);
-	TCCR1A &= ~(1 << WGM11);
-
-	TCCR1B |= (1 << WGM12);
-	TCCR1B |= (1 << CS11); //clock select clkIO / 64 (prescaler)
-	TCCR1B |= (1 << CS10);
-	* */
-
 	//Phase correct mode
-	icr1_temp = CLOCK_FQ / (2 * PRESCALER_VAL * BRUSHLESS_PWM_FREQ);
+	icr1_temp = CLOCK_FQ / (2 * PRESCALER_VAL * SERVO_PWM_FREQ);
 
 	TCCR1A |= (1 << WGM11);
 	TCCR1B |= (1 << WGM13);
 	TCCR1B |= (1 << CS11); //prescaler = 8
 
-	//icr1_temp = 20000; //override calculation
-
-	ICR1H = icr1_temp >> 8;
-	ICR1L = icr1_temp;
+	register_16_write(&ICR1, icr1_temp);
+	//ICR1H = icr1_temp >> 8;
+	//ICR1L = icr1_temp;
 }
 
 /**
@@ -129,10 +116,9 @@ void timer3_init(void)
 	TCCR3B |= (1 << WGM33);
 	TCCR3B |= (1 << CS31); //prescaler = 8
 
-	//icr3_temp = 20000; //override calculation
-
-	ICR3H = icr3_temp >> 8;
-	ICR3L = icr3_temp;
+	register_16_write(&ICR3, icr3_temp);
+	//ICR3H = icr3_temp >> 8;
+	//ICR3L = icr3_temp;
 }
 
 void pwm_init(void)

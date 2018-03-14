@@ -6,6 +6,7 @@
 
 #define PRESCALER_VAL 8
 #define BRUSHLESS_PWM_FREQ 50 //Hz 
+#define SERVO_PWM_FREQ 50
 
 #define SERVO_OCR_MIN 500
 #define SERVO_OCR_MAX 2500
