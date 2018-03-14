@@ -9,7 +9,7 @@
 /******************************
 * sensors[0] -> front sensor  *
 * sensors[1] -> back sensor   *
-/******************************/
+******************************/
 
 static t_sensor sensors[NUM_OF_SENS];
 static t_sensor temp[NUM_OF_SENS];
@@ -23,8 +23,8 @@ void sensors_init(void)
 	DDRA |= (0 << PA7); //sens1 -> P1
 	DDRA |= (0 << PA6); //sens2 -> P2
 
-	sensors[0].pin = 0;
-	sensors[1].pin = 1;
+	sensors[0].pin = 7; //try with PA7
+	sensors[1].pin = 6;
 
 	sensors[0].value = 0;
 	sensors[1].value = 0;

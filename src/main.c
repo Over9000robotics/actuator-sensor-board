@@ -15,11 +15,11 @@ int main(void)
 	unsigned char sens = 0;	
 	
 	USART0_init(57600);
-
+/*
 	//sens3  - pg2
 	DDRG |= (0 << PG2);
 	PORTG = 0;
-	
+*/	
 	timer1_init();
 	timer3_init();
 	pwm_init();

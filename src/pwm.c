@@ -1,3 +1,8 @@
+//TODO
+// - Timer2 pwm generating
+// -  Servo mission  control with RPI
+
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdint.h>
@@ -14,7 +19,7 @@ volatile static uint16_t* servo3 = &OCR1C; //PB4 connector
 volatile static  uint8_t* servo4 = &OCR2A; //PB1 connector
 
 volatile static uint16_t* head_brushless = &OCR3C;
-volatile static uint16_t* second_brushless = &OCR3A;
+volatile static uint16_t* second_brushless = &OCR3B;
 
 static uint32_t icr3_temp;
 static uint32_t icr1_temp;
@@ -32,23 +37,23 @@ void pbr_pwm_set(uint8_t brushless_num, uint8_t procent)
 	if(procent > 100 || procent < 0)
 		return;
 
-
 	//pwm_val = (int) ((icr3_temp * procent) / 100); //test -> pwm can be from 0 to max
 
 	pwm_val = 1000 + procent * (1000 / 100);
 
 	if(brushless_num == BR_HEAD)
 	{
-		OCR3CH = pwm_val >> 8;
-		OCR3CL = pwm_val;
+		register_16_write(head_brushless, pwm_val);
+	//	OCR3CH = pwm_val >> 8;
+	//	OCR3CL = pwm_val;
 	}
 
 	else if(brushless_num == BR_SECONDARY)
 	{
-		OCR3BH = pwm_val >> 8;
-		OCR3BL = pwm_val;
+		register_16_write(second_brushless, pwm_val);
+		//OCR3BH = pwm_val >> 8;
+		//OCR3BL = pwm_val;
 	}
-
 }
 
 /**
