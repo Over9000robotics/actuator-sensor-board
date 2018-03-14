@@ -63,6 +63,18 @@ void read_packet(void)
 			break;
 		}
 		
+			case SERVO_SET_ANGLE:
+		{
+			uint8_t angle = 0;
+			uint8_t servo_num = 0;
+			
+			servo_num = read_byte();
+			angle = read_byte();
+			
+			servo_set_position(servo_num, angle);
+			break;
+		}
+		
 		default:
 		{
 			

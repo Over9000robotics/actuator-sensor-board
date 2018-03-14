@@ -80,7 +80,7 @@ OBJDIR = build
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = ./main.c ./usart0.c ./sensor.c ./communicator.c ./spi.c ./pwm.c ./actuator.c
+SRC = ./main.c ./usart0.c ./sensor.c ./communicator.c ./spi.c ./pwm.c ./actuator.c ./register.c
 
 # Libs here
 #SRC += ./libs/can/can_wrapper.c ./libs/dynamixel/dynamixel.c

@@ -8,9 +8,7 @@
 #include "actuator.h"
 #include "communicator.h"
 #include "pwm.h"
-
-#define setbit(port, bit) (port) |= (1 << (bit))
-#define clearbit(port, bit) (port) &= ~(1 << (bit))
+#include "register.h"
 
 int main(void)
 {
@@ -22,6 +20,8 @@ int main(void)
 	DDRG |= (0 << PG2);
 	PORTG = 0;
 	
+	timer1_init();
+	timer3_init();
 	pwm_init();
 	sensors_init();
 	
@@ -30,6 +30,9 @@ int main(void)
 	
 	sei();
 	
+	servo_pwm_set(SERVO1, 0);
+	servo_pwm_set(SERVO2, 0);
+	servo_pwm_set(SERVO3, 0);
 	//brushless_init();
 	
 	while(1)
@@ -38,8 +41,13 @@ int main(void)
 		read_packet();
 		
 		send_sensor_status();
-		
+/*		
+		servo_pwm_set(0, 180);
+		_delay_ms(1000);
+		servo_pwm_set(0, 0);
+		_delay_ms(1000);
 		//_delay_ms(100);
+*/
 	}	
 	return 0;
 }
