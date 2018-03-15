@@ -2,7 +2,6 @@
 // - Timer2 pwm generating
 // -  Servo mission  control with RPI
 
-
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdint.h>
@@ -13,13 +12,20 @@
 #include "communicator.h"
 #include "register.h"
 
+
 volatile static uint16_t* servo1 = &OCR1A; //PB2 connector
 volatile static uint16_t* servo2 = &OCR1B; //PB3 connector
 volatile static uint16_t* servo3 = &OCR1C; //PB4 connector
+
+/********************************************************************
+ *  PWM on 8-bit timer2 not implemented								*
+ * On our robot, there would be three pwm servos					*
+ * Fourth pwm connector could be universal for some backup systems  *
+ ********************************************************************/
 volatile static  uint8_t* servo4 = &OCR2A; //PB1 connector
 
-volatile static uint16_t* head_brushless = &OCR3C;
-volatile static uint16_t* second_brushless = &OCR3B;
+volatile static uint16_t* head_brushless = &OCR3C;	 //PBR1
+volatile static uint16_t* second_brushless = &OCR3B; //PBR2
 
 static uint32_t icr3_temp;
 static uint32_t icr1_temp;

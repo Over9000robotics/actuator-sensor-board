@@ -70,7 +70,7 @@ void read_packet(void)
 			
 			servo_num = read_byte();
 			angle = read_byte();
-			
+	
 			servo_set_position(servo_num, angle);
 			break;
 		}

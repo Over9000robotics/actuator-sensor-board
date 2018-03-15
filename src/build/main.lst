@@ -1,0 +1,159 @@
+   1               		.file	"main.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__RAMPZ__ = 0x3b
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.text
+   9               	.Ltext0:
+  10               		.cfi_sections	.debug_frame
+  11               		.section	.text.startup,"ax",@progbits
+  12               	.global	main
+  14               	main:
+  15               	.LFB7:
+  16               		.file 1 "main.c"
+   1:main.c        **** #include <avr/io.h>
+   2:main.c        **** #include <avr/interrupt.h>
+   3:main.c        **** #include <stdint.h>
+   4:main.c        **** #include <util/delay.h>
+   5:main.c        **** 
+   6:main.c        **** #include "usart0.h"
+   7:main.c        **** #include "sensor.h"
+   8:main.c        **** #include "actuator.h"
+   9:main.c        **** #include "communicator.h"
+  10:main.c        **** #include "pwm.h"
+  11:main.c        **** #include "register.h"
+  12:main.c        **** 
+  13:main.c        **** int main(void)
+  14:main.c        **** {
+  17               		.loc 1 14 0
+  18               		.cfi_startproc
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+  23               	.LVL0:
+  15:main.c        **** 	unsigned char sens = 0;	
+  16:main.c        **** 	
+  17:main.c        **** 	USART0_init(57600);
+  24               		.loc 1 17 0
+  25 0000 60E0      		ldi r22,0
+  26 0002 71EE      		ldi r23,lo8(-31)
+  27 0004 80E0      		ldi r24,0
+  28 0006 90E0      		ldi r25,0
+  29 0008 0E94 0000 		call USART0_init
+  30               	.LVL1:
+  18:main.c        **** /*
+  19:main.c        **** 	//sens3  - pg2
+  20:main.c        **** 	DDRG |= (0 << PG2);
+  21:main.c        **** 	PORTG = 0;
+  22:main.c        **** */
+  23:main.c        **** 	timer1_init();
+  31               		.loc 1 23 0
+  32 000c 0E94 0000 		call timer1_init
+  33               	.LVL2:
+  24:main.c        **** 	timer3_init();
+  34               		.loc 1 24 0
+  35 0010 0E94 0000 		call timer3_init
+  36               	.LVL3:
+  25:main.c        **** 	pwm_init();
+  37               		.loc 1 25 0
+  38 0014 0E94 0000 		call pwm_init
+  39               	.LVL4:
+  26:main.c        **** 	sensors_init();
+  40               		.loc 1 26 0
+  41 0018 0E94 0000 		call sensors_init
+  42               	.LVL5:
+  27:main.c        **** 	
+  28:main.c        **** 	brushless_set_speed(BR_HEAD, 0);	
+  43               		.loc 1 28 0
+  44 001c 60E0      		ldi r22,0
+  45 001e 81E0      		ldi r24,lo8(1)
+  46 0020 0E94 0000 		call brushless_set_speed
+  47               	.LVL6:
+  29:main.c        **** 	brushless_set_speed(BR_SECONDARY, 0);
+  48               		.loc 1 29 0
+  49 0024 60E0      		ldi r22,0
+  50 0026 82E0      		ldi r24,lo8(2)
+  51 0028 0E94 0000 		call brushless_set_speed
+  52               	.LVL7:
+  30:main.c        **** 	
+  31:main.c        **** 	sei();
+  53               		.loc 1 31 0
+  54               	/* #APP */
+  55               	 ;  31 "main.c" 1
+  56 002c 7894      		sei
+  57               	 ;  0 "" 2
+  32:main.c        **** 	
+  33:main.c        **** 	servo_pwm_set(SERVO1, 180);
+  58               		.loc 1 33 0
+  59               	/* #NOAPP */
+  60 002e 64EB      		ldi r22,lo8(-76)
+  61 0030 81E0      		ldi r24,lo8(1)
+  62 0032 0E94 0000 		call servo_pwm_set
+  63               	.LVL8:
+  34:main.c        **** 	servo_pwm_set(SERVO2, 180);
+  64               		.loc 1 34 0
+  65 0036 64EB      		ldi r22,lo8(-76)
+  66 0038 82E0      		ldi r24,lo8(2)
+  67 003a 0E94 0000 		call servo_pwm_set
+  68               	.LVL9:
+  35:main.c        **** 	servo_pwm_set(SERVO3, 180);
+  69               		.loc 1 35 0
+  70 003e 64EB      		ldi r22,lo8(-76)
+  71 0040 83E0      		ldi r24,lo8(3)
+  72 0042 0E94 0000 		call servo_pwm_set
+  73               	.LVL10:
+  74               	.L2:
+  36:main.c        **** 	//brushless_init();
+  37:main.c        **** 
+  38:main.c        **** 	while(1)
+  39:main.c        **** 	{
+  40:main.c        **** 		update_sensor_status();
+  75               		.loc 1 40 0 discriminator 1
+  76 0046 0E94 0000 		call update_sensor_status
+  77               	.LVL11:
+  41:main.c        **** 		read_packet();
+  78               		.loc 1 41 0 discriminator 1
+  79 004a 0E94 0000 		call read_packet
+  80               	.LVL12:
+  42:main.c        **** 		
+  43:main.c        **** 		send_sensor_status();
+  81               		.loc 1 43 0 discriminator 1
+  82 004e 0E94 0000 		call send_sensor_status
+  83               	.LVL13:
+  44:main.c        **** 	}	
+  84               		.loc 1 44 0 discriminator 1
+  85 0052 00C0      		rjmp .L2
+  86               		.cfi_endproc
+  87               	.LFE7:
+  89               		.text
+  90               	.Letext0:
+  91               		.file 2 "/usr/lib/avr/include/stdint.h"
+  92               		.file 3 "pwm.h"
+  93               		.file 4 "sensor.h"
+  94               		.file 5 "usart0.h"
+  95               		.file 6 "actuator.h"
+  96               		.file 7 "communicator.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccd9vL4o.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccd9vL4o.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccd9vL4o.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccd9vL4o.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccd9vL4o.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccd9vL4o.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccd9vL4o.s:14     .text.startup:0000000000000000 main
+
+UNDEFINED SYMBOLS
+USART0_init
+timer1_init
+timer3_init
+pwm_init
+sensors_init
+brushless_set_speed
+servo_pwm_set
+update_sensor_status
+read_packet
+send_sensor_status
