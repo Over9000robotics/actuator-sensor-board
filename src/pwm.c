@@ -1,7 +1,6 @@
-//TODO
-// - Timer2 pwm generating
-// -  Servo mission  control with RPI
-
+/**
+ * @file pwm.c
+ */
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdint.h>
@@ -31,6 +30,9 @@ static uint32_t icr3_temp;
 static uint32_t icr1_temp;
 
 /**
+ * @brief Sets duty cycle on desired brushless
+ * @param brushless_num - number of motor to give duty cycle
+ * @param procent - 0 % - 100 % of duty cycle
  * min -> 1 ms -> pwm = 1000
  * max -> 2 ms -> pwm = 2000
  * -> offset = 1000
@@ -43,7 +45,7 @@ void pbr_pwm_set(uint8_t brushless_num, uint8_t procent)
 	if(procent > 100 || procent < 0)
 		return;
 
-	//pwm_val = (int) ((icr3_temp * procent) / 100); //test -> pwm can be from 0 to max
+	//pwm_val = (int) ((icr3_temp * procent) / 100); //test -> pwm can be from 0 to max pwm period
 
 	pwm_val = 1000 + procent * (1000 / 100);
 
@@ -59,6 +61,11 @@ void pbr_pwm_set(uint8_t brushless_num, uint8_t procent)
 }
 
 /**
+ * @brief Sets duty cycle of pwm servo
+ * @param servo_num - number of desired servo
+ * @param degrees - angle to go, it can be restricted with
+ * MAX and MIN parameters defined in actuator.h
+ * 
  * Pusle width -> 20 ms
  * Duty cycle -> 0.5 to 2.5 ms
  */
@@ -70,23 +77,16 @@ void servo_pwm_set(int8_t servo_num, uint8_t degrees)
 	// 500  -> 0.5 ms -> position LEFT
 	// 1500 -> 1.5 ms -> position RIGHT
 	
+	pwm_val = SERVO_OCR_MIN + ((uint32_t) degrees * (SERVO_OCR_MAX-SERVO_OCR_MIN)) / 180;
+	
 	if(servo_num == SERVO1)
-	{
-		pwm_val = SERVO_OCR_MIN + ((uint32_t) degrees * (SERVO_OCR_MAX-SERVO_OCR_MIN)) / 180;
 		register_16_write(servo1, pwm_val);
-	}
 	
 	else if(servo_num == SERVO2)
-	{
-		pwm_val = SERVO_OCR_MIN + ((uint32_t) degrees * (SERVO_OCR_MAX-SERVO_OCR_MIN)) / 180;
 		register_16_write(servo2, pwm_val);
-	}
 	
 	else if(servo_num == SERVO3)
-	{
-		pwm_val = SERVO_OCR_MIN + ((uint32_t) degrees * (SERVO_OCR_MAX-SERVO_OCR_MIN)) / 180;
 		register_16_write(servo3, pwm_val);
-	}
 /*
 	else if(servo_num == SERVO4)
 		pwm_val = 
@@ -128,22 +128,15 @@ void timer3_init(void)
 	//ICR3L = icr3_temp;
 }
 
+
 void pwm_init(void)
 {
 
-/**********************************************************
- *  			OC2A pin
- * 		-TCCR2A register-
- * FOC2A  WGM20  COM2A1  COM2A0  WGM21  CS22  CS21  CS20
- *  0		1		1		0	   1	  1		0	 0
- *
- **********************************************************/
 	//fastpwm on OC2A pin
 	DDRB |= (1 << PB4);
 
 	TCCR2A = 0x6C;
 	OCR2A = 0;
-/******************************************************************/
 
 /***************OC1A***********************************************/
 	//fast pwm on OC1A pin (PB2 - PWM2)
@@ -155,7 +148,6 @@ void pwm_init(void)
 //	TCCR1A &= ~(1 << COM1A0);
 	TCCR1A |= (1 << COM1A1);
 
-/*********************************************************************/
 /************** OC1B **************************************************/
 	DDRB |= (1 << PB6);
 	OCR1BH = 0;
@@ -165,7 +157,6 @@ void pwm_init(void)
 //	TCCR1A |= (1 << COM1B1);
 //	TCCR1A &= ~(1 << COM1B0);
 
-/*********************************************************************/
 /************* OC1C **************************************************/
 	DDRB |= (1 << PB7);
 	OCR1CH = 0;
@@ -175,8 +166,6 @@ void pwm_init(void)
 //	TCCR1A |= (1 << COM1C1);
 //	TCCR1A &= ~(1 << COM1C0);
 
-/*********************************************************************/
-
 /*********OC3C - PBR1*************************************************/
 //OC3C
 	DDRE |= (1 << PE5);
@@ -184,6 +173,7 @@ void pwm_init(void)
 
 	OCR3CH = 0;
 	OCR3CL = 0;
+	
 /********OC3B - PBR2**************************************************/
 	DDRE |= (1 << PE4);
 	TCCR3A |= (1 << COM3B1);

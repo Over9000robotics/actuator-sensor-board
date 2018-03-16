@@ -1,3 +1,7 @@
+/**
+ * @file spi.h 
+ */
+
 #include <stdio.h>
 
 #ifndef SPI_H_

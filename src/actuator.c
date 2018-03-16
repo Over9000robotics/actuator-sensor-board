@@ -23,7 +23,7 @@ void brushless_set_speed(uint8_t brushless_num, uint8_t procent)
 	pbr_pwm_set(brushless_num, procent);
 }
 
-void servo_set_position(int8_t servo_num, int8_t degrees)
+void servo_set_position(int8_t servo_num, uint8_t degrees)
 {
 	if(servo_num > NUM_OF_SERVOS || servo_num < 0)
 		return;
@@ -39,7 +39,7 @@ void servo_set_position(int8_t servo_num, int8_t degrees)
 
 uint8_t servo_limit_check(int8_t servo_num, int8_t degrees)
 {
-	uint8_t correctness = 0;
+	uint8_t correctness = 1;
 	
 	if(servo_num == SERVO1)
 	{
@@ -47,8 +47,8 @@ uint8_t servo_limit_check(int8_t servo_num, int8_t degrees)
 		{
 			return 0;
 		}
-		else 
-			correctness = 1;
+//		else 
+//			correctness = 1;
 	}
 	
 	else if(servo_num == SERVO2)
@@ -57,8 +57,8 @@ uint8_t servo_limit_check(int8_t servo_num, int8_t degrees)
 		{
 			return 0;
 		}
-		else 
-			correctness = 1;
+//		else 
+//			correctness = 1;
 	}
 	
 	else if(servo_num == SERVO3)
@@ -67,8 +67,8 @@ uint8_t servo_limit_check(int8_t servo_num, int8_t degrees)
 		{
 			return 0;
 		}
-		else 
-			correctness = 1;
+//		else 
+//			correctness = 1;
 	}
 	
 	else if(servo_num == SERVO4)
@@ -77,8 +77,8 @@ uint8_t servo_limit_check(int8_t servo_num, int8_t degrees)
 		{
 			return 0;
 		}
-		else 
-			correctness = 1;
+//		else 
+//			correctness = 1;
 	}
 	
 	return correctness;

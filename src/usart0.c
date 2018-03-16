@@ -1,3 +1,7 @@
+/**
+ * @file usart0.c
+ */
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdint.h>
@@ -5,7 +9,7 @@
 
 #include "usart0.h"
 
-#define CLOCK_FQ (16000000)
+#define CLOCK_FQ (16000000) /** External oscilator clock frequency */
 
 void USART0_init(uint32_t baud)
 {
@@ -18,12 +22,11 @@ void USART0_init(uint32_t baud)
 	UBRR0L = (unsigned char) temp_baud;
 
 	UCSR0A |= (1 << U2X0);
-
-	UCSR0B |= (1 << RXEN0);	// Enable RX
 	
 	DDRE |= (1 << PE1);			// Set TX as output
 	DDRE &= ~(1 << PE0);		// Set RX as input
 	
+	UCSR0B |= (1 << RXEN0);	// Enable RX
 	UCSR0B |= (1 << TXEN0);		//Enable TX
 	UCSR0B &= ~(1 << UCSZ02);	//Data size
 	

@@ -29,7 +29,7 @@
 
 void brushless_set_speed(uint8_t brushless_num, uint8_t procent);
 
-void servo_set_position(int8_t servo_num, int8_t degrees);
+void servo_set_position(int8_t servo_num, uint8_t degrees);
 
 /**
  * Function for calibrating AeroStar brushless ESC

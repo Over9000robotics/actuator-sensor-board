@@ -1,3 +1,6 @@
+/**
+ * @file sensor.c
+ */
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdint.h>
@@ -11,13 +14,18 @@
 * sensors[1] -> back sensor   *
 ******************************/
 
-static t_sensor sensors[NUM_OF_SENS];
-static t_sensor temp[NUM_OF_SENS];
+static t_sensor sensors[NUM_OF_SENS]; /** Array of sensors where sensors output data will be saved*/
+static t_sensor temp[NUM_OF_SENS]; /** Temporary array of sensors data */
 static uint8_t state_changed_flag = 1;
 
 //Memristor board
 // P1 -> PA0
 // P2 -> PA1
+
+/**
+ * @brief Inits pin and value for sensors
+ * @todo edit this function, take pin and port value as a parameter
+ */
 void sensors_init(void)
 {
 	DDRA |= (0 << PA7); //sens1 -> P1
@@ -30,6 +38,12 @@ void sensors_init(void)
 	sensors[1].value = 0;
 }
 
+/**
+ * @brief Reads states of sensor pins and edits value in sensors structure
+ * If sensor active, value will be 0xFF, if not active, 0x00
+ * If sensor state changed, this function will automaticaly send status
+ * of all sensors to master unit via protocol defined in communicator.c
+ */
 void update_sensor_status(void)
 {
 	temp[0].value = PINA & (1 << sensors[0].pin);
@@ -61,7 +75,18 @@ void update_sensor_status(void)
 		send_sensor_status();
 	}
 }
-
+/**
+ * @brief Sends sensor status via protocol defined in communicator.c
+ * packet:
+ * 0xFE (start of packet)
+ * sensor1.value
+ * sensor2.value
+ * .
+ * .
+ * .
+ * sensorN.value 
+ * 0xFC (end of packet)
+ */
 void send_sensor_status(void)
 {
 

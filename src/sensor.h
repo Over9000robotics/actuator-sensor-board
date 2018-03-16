@@ -1,3 +1,7 @@
+/**
+ * @file sensor.h 
+ */
+
 #ifndef SENSOR_H_
 #define SENSOR_H_
 
@@ -7,6 +11,9 @@
 
 #define SENSOR_ASK 'S'
 
+/**
+ * Structure with values of sensor pin and sensor state
+ */
 typedef struct t_sensor
 {
 	uint8_t value;
