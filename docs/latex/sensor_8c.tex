@@ -1,0 +1,36 @@
+\hypertarget{sensor_8c}{}\section{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/sensor.c File Reference}
+\label{sensor_8c}\index{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/sensor.\+c@{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/sensor.\+c}}
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}communicator.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensor.\+h\char`\"{}}\newline
+Include dependency graph for sensor.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sensor_8c_ac5ec1d578591899e43c3515d05e573b7}{sensors\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Inits pin and value for sensors. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sensor_8c_aba54e9faa63f56c36022f8c06f00dbd7}\label{sensor_8c_aba54e9faa63f56c36022f8c06f00dbd7}} 
+void \mbox{\hyperlink{sensor_8c_aba54e9faa63f56c36022f8c06f00dbd7}{update\+\_\+sensor\+\_\+status}} (void)
+\begin{DoxyCompactList}\small\item\em Reads states of sensor pins and edits value in sensors structure If sensor active, value will be 0x\+FF, if not active, 0x00 If sensor state changed, this function will automaticaly send status of all sensors to master unit via protocol defined in communicator.\+c. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sensor_8c_a93df990a59eb27cc0a0fce05720ac379}\label{sensor_8c_a93df990a59eb27cc0a0fce05720ac379}} 
+void \mbox{\hyperlink{sensor_8c_a93df990a59eb27cc0a0fce05720ac379}{send\+\_\+sensor\+\_\+status}} (void)
+\begin{DoxyCompactList}\small\item\em Sends sensor status via protocol defined in communicator.\+c packet\+: 0x\+FE (start of packet) sensor1.\+value sensor2.\+valuesensor\+N.\+value 0x\+FC (end of packet) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sensor_8c_ac5ec1d578591899e43c3515d05e573b7}\label{sensor_8c_ac5ec1d578591899e43c3515d05e573b7}} 
+\index{sensor.\+c@{sensor.\+c}!sensors\+\_\+init@{sensors\+\_\+init}}
+\index{sensors\+\_\+init@{sensors\+\_\+init}!sensor.\+c@{sensor.\+c}}
+\subsubsection{\texorpdfstring{sensors\+\_\+init()}{sensors\_init()}}
+{\footnotesize\ttfamily void sensors\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inits pin and value for sensors. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]edit this function, take pin and port value as a parameter \end{DoxyRefDesc}

@@ -1,0 +1,61 @@
+\hypertarget{sensor_8h}{}\section{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/sensor.h File Reference}
+\label{sensor_8h}\index{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/sensor.\+h@{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/sensor.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for sensor.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structt__sensor}{t\+\_\+sensor}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sensor_8h_a062691cbb16415a78616fdc6ef455851}\label{sensor_8h_a062691cbb16415a78616fdc6ef455851}} 
+\#define {\bfseries N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+NS}~2
+\item 
+\mbox{\Hypertarget{sensor_8h_a11964c8b5541871179bc44e1003a77e1}\label{sensor_8h_a11964c8b5541871179bc44e1003a77e1}} 
+\#define {\bfseries S\+E\+N\+S\+O\+R\+\_\+\+A\+SK}~\textquotesingle{}S\textquotesingle{}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structt__sensor}{t\+\_\+sensor}} \mbox{\hyperlink{sensor_8h_ae476bbef2e69d3c9e26a9f9b9422cc1c}{t\+\_\+sensor}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sensor_8h_ac5ec1d578591899e43c3515d05e573b7}{sensors\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Inits pin and value for sensors. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sensor_8h_aba54e9faa63f56c36022f8c06f00dbd7}\label{sensor_8h_aba54e9faa63f56c36022f8c06f00dbd7}} 
+void \mbox{\hyperlink{sensor_8h_aba54e9faa63f56c36022f8c06f00dbd7}{update\+\_\+sensor\+\_\+status}} (void)
+\begin{DoxyCompactList}\small\item\em Reads states of sensor pins and edits value in sensors structure If sensor active, value will be 0x\+FF, if not active, 0x00 If sensor state changed, this function will automaticaly send status of all sensors to master unit via protocol defined in communicator.\+c. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{sensor_8h_a93df990a59eb27cc0a0fce05720ac379}\label{sensor_8h_a93df990a59eb27cc0a0fce05720ac379}} 
+void \mbox{\hyperlink{sensor_8h_a93df990a59eb27cc0a0fce05720ac379}{send\+\_\+sensor\+\_\+status}} (void)
+\begin{DoxyCompactList}\small\item\em Sends sensor status via protocol defined in communicator.\+c packet\+: 0x\+FE (start of packet) sensor1.\+value sensor2.\+valuesensor\+N.\+value 0x\+FC (end of packet) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{sensor_8h_ae476bbef2e69d3c9e26a9f9b9422cc1c}\label{sensor_8h_ae476bbef2e69d3c9e26a9f9b9422cc1c}} 
+\index{sensor.\+h@{sensor.\+h}!t\+\_\+sensor@{t\+\_\+sensor}}
+\index{t\+\_\+sensor@{t\+\_\+sensor}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{t\+\_\+sensor}{t\_sensor}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structt__sensor}{t\+\_\+sensor}} \mbox{\hyperlink{structt__sensor}{t\+\_\+sensor}}}
+
+Structure with values of sensor pin and sensor state 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sensor_8h_ac5ec1d578591899e43c3515d05e573b7}\label{sensor_8h_ac5ec1d578591899e43c3515d05e573b7}} 
+\index{sensor.\+h@{sensor.\+h}!sensors\+\_\+init@{sensors\+\_\+init}}
+\index{sensors\+\_\+init@{sensors\+\_\+init}!sensor.\+h@{sensor.\+h}}
+\subsubsection{\texorpdfstring{sensors\+\_\+init()}{sensors\_init()}}
+{\footnotesize\ttfamily void sensors\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inits pin and value for sensors. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]edit this function, take pin and port value as a parameter \end{DoxyRefDesc}

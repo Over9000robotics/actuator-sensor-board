@@ -1,0 +1,54 @@
+\hypertarget{spi_8c}{}\section{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/spi.c File Reference}
+\label{spi_8c}\index{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/spi.\+c@{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/spi.\+c}}
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+Include dependency graph for spi.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{spi_8c_a387bb7eca6e3cf131ced355901084ab1}{S\+P\+I\+\_\+slave\+\_\+init}} (void)
+\item 
+char \mbox{\hyperlink{spi_8c_ae94f3d58c1858ef26e3fab2ccd246290}{S\+P\+I\+\_\+receive}} (void)
+\begin{DoxyCompactList}\small\item\em Read byte from S\+PI input buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi_8c_a8f8d39bbb8eecc667c2fc4f4ca328608}{S\+P\+I\+\_\+transmit}} (char byte)
+\begin{DoxyCompactList}\small\item\em Transmits byte via S\+PI B\+US. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{spi_8c_ae94f3d58c1858ef26e3fab2ccd246290}\label{spi_8c_ae94f3d58c1858ef26e3fab2ccd246290}} 
+\index{spi.\+c@{spi.\+c}!S\+P\+I\+\_\+receive@{S\+P\+I\+\_\+receive}}
+\index{S\+P\+I\+\_\+receive@{S\+P\+I\+\_\+receive}!spi.\+c@{spi.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+I\+\_\+receive()}{SPI\_receive()}}
+{\footnotesize\ttfamily char S\+P\+I\+\_\+receive (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Read byte from S\+PI input buffer. 
+
+\begin{DoxyReturn}{Returns}
+received byte 
+\end{DoxyReturn}
+\mbox{\Hypertarget{spi_8c_a387bb7eca6e3cf131ced355901084ab1}\label{spi_8c_a387bb7eca6e3cf131ced355901084ab1}} 
+\index{spi.\+c@{spi.\+c}!S\+P\+I\+\_\+slave\+\_\+init@{S\+P\+I\+\_\+slave\+\_\+init}}
+\index{S\+P\+I\+\_\+slave\+\_\+init@{S\+P\+I\+\_\+slave\+\_\+init}!spi.\+c@{spi.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+I\+\_\+slave\+\_\+init()}{SPI\_slave\_init()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+slave\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+S\+PI Frequency\+: 16 000 000 / 32 = 500000 No interrupt \mbox{\Hypertarget{spi_8c_a8f8d39bbb8eecc667c2fc4f4ca328608}\label{spi_8c_a8f8d39bbb8eecc667c2fc4f4ca328608}} 
+\index{spi.\+c@{spi.\+c}!S\+P\+I\+\_\+transmit@{S\+P\+I\+\_\+transmit}}
+\index{S\+P\+I\+\_\+transmit@{S\+P\+I\+\_\+transmit}!spi.\+c@{spi.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+I\+\_\+transmit()}{SPI\_transmit()}}
+{\footnotesize\ttfamily void S\+P\+I\+\_\+transmit (\begin{DoxyParamCaption}\item[{char}]{byte }\end{DoxyParamCaption})}
+
+
+
+Transmits byte via S\+PI B\+US. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & -\/ byte to transmit \\
+\hline
+\end{DoxyParams}

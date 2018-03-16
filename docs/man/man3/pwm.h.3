@@ -1,0 +1,70 @@
+.TH "/home/djordje/Desktop/actuator-sensor-board/src/pwm.h" 3 "Fri Mar 16 2018" "actuator-sensor-board" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/djordje/Desktop/actuator-sensor-board/src/pwm.h
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPRESCALER_VAL\fP   8"
+.br
+.ti -1c
+.RI "#define \fBBRUSHLESS_PWM_FREQ\fP   50"
+.br
+.ti -1c
+.RI "#define \fBSERVO_PWM_FREQ\fP   50"
+.br
+.ti -1c
+.RI "#define \fBSERVO_OCR_MIN\fP   500"
+.br
+.ti -1c
+.RI "#define \fBSERVO_OCR_MAX\fP   2500"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBpbr_pwm_set\fP (uint8_t brushless_num, uint8_t procent)"
+.br
+.ti -1c
+.RI "void \fBservo_pwm_set\fP (int8_t servo_num, uint8_t degrees)"
+.br
+.ti -1c
+.RI "void \fBtimer1_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBtimer3_init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBpwm_init\fP (void)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void pbr_pwm_set (uint8_t brushless_num, uint8_t procent)"
+Sets brushless rotating speed 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbrushless_num\fP - number of motor to drive, defined in \fBactuator\&.h\fP 
+.br
+\fIprocent\fP - 0 -> stopped, 100 -> max rotating speed
+.RE
+.PP
+min -> 1 ms -> pwm = 1000 max -> 2 ms -> pwm = 2000 -> offset = 1000 0% - 100% will be from 1000 to 2000 
+.SS "void pwm_init (void)"
+Inits pwm pins for servo and brushless motors 
+.SS "void servo_pwm_set (int8_t servo_num, uint8_t degrees)"
+Pusle width -> 20 ms Duty cycle -> 0\&.5 to 2\&.5 ms 
+.SS "void timer1_init (void)"
+Initialisation for 16-bit Timer1 
+.SS "void timer3_init (void)"
+Initialisation for 16-bit Timer3 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for actuator-sensor-board from the source code\&.

@@ -1,0 +1,95 @@
+\hypertarget{pwm_8h}{}\section{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/pwm.h File Reference}
+\label{pwm_8h}\index{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/pwm.\+h@{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/pwm.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{pwm_8h_aa23388e79adf542858f7eab0eb53df8b}\label{pwm_8h_aa23388e79adf542858f7eab0eb53df8b}} 
+\#define {\bfseries P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+\+V\+AL}~8
+\item 
+\mbox{\Hypertarget{pwm_8h_a91b10240951eac4b9da6b1a444b8a7c9}\label{pwm_8h_a91b10240951eac4b9da6b1a444b8a7c9}} 
+\#define {\bfseries B\+R\+U\+S\+H\+L\+E\+S\+S\+\_\+\+P\+W\+M\+\_\+\+F\+R\+EQ}~50
+\item 
+\mbox{\Hypertarget{pwm_8h_a0eb250599505bd3600d26b6bad6a415f}\label{pwm_8h_a0eb250599505bd3600d26b6bad6a415f}} 
+\#define {\bfseries S\+E\+R\+V\+O\+\_\+\+P\+W\+M\+\_\+\+F\+R\+EQ}~50
+\item 
+\mbox{\Hypertarget{pwm_8h_a2bf8ecfbd3b079e457795f7e2acddadb}\label{pwm_8h_a2bf8ecfbd3b079e457795f7e2acddadb}} 
+\#define {\bfseries S\+E\+R\+V\+O\+\_\+\+O\+C\+R\+\_\+\+M\+IN}~500
+\item 
+\mbox{\Hypertarget{pwm_8h_a52d7ebc4cc449f5b0a35a655f3304cb7}\label{pwm_8h_a52d7ebc4cc449f5b0a35a655f3304cb7}} 
+\#define {\bfseries S\+E\+R\+V\+O\+\_\+\+O\+C\+R\+\_\+\+M\+AX}~2500
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pwm_8h_acc66dd1fc7bc110d250eecdc4202f071}{pbr\+\_\+pwm\+\_\+set}} (uint8\+\_\+t brushless\+\_\+num, uint8\+\_\+t procent)
+\begin{DoxyCompactList}\small\item\em Sets duty cycle on desired brushless. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pwm_8h_ac36c296f980acc61f5959d1c6ded84ef}{servo\+\_\+pwm\+\_\+set}} (int8\+\_\+t servo\+\_\+num, uint8\+\_\+t degrees)
+\begin{DoxyCompactList}\small\item\em Sets duty cycle of pwm servo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{pwm_8h_a968c314be24f7043eeff034ebf7c4a03}{timer1\+\_\+init}} (void)
+\item 
+void \mbox{\hyperlink{pwm_8h_a6d0ecff8ad2f92e636ffa15e06725690}{timer3\+\_\+init}} (void)
+\item 
+void \mbox{\hyperlink{pwm_8h_a1e8fdae3fd7118582ffa427dad05b6e1}{pwm\+\_\+init}} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{pwm_8h_acc66dd1fc7bc110d250eecdc4202f071}\label{pwm_8h_acc66dd1fc7bc110d250eecdc4202f071}} 
+\index{pwm.\+h@{pwm.\+h}!pbr\+\_\+pwm\+\_\+set@{pbr\+\_\+pwm\+\_\+set}}
+\index{pbr\+\_\+pwm\+\_\+set@{pbr\+\_\+pwm\+\_\+set}!pwm.\+h@{pwm.\+h}}
+\subsubsection{\texorpdfstring{pbr\+\_\+pwm\+\_\+set()}{pbr\_pwm\_set()}}
+{\footnotesize\ttfamily void pbr\+\_\+pwm\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{brushless\+\_\+num,  }\item[{uint8\+\_\+t}]{procent }\end{DoxyParamCaption})}
+
+
+
+Sets duty cycle on desired brushless. 
+
+Sets brushless rotating speed 
+\begin{DoxyParams}{Parameters}
+{\em brushless\+\_\+num} & -\/ number of motor to drive, defined in \mbox{\hyperlink{actuator_8h_source}{actuator.\+h}} \\
+\hline
+{\em procent} & -\/ 0 -\/$>$ stopped, 100 -\/$>$ max rotating speed\\
+\hline
+{\em brushless\+\_\+num} & -\/ number of motor to give duty cycle \\
+\hline
+{\em procent} & -\/ 0 \% -\/ 100 \% of duty cycle min -\/$>$ 1 ms -\/$>$ pwm = 1000 max -\/$>$ 2 ms -\/$>$ pwm = 2000 -\/$>$ offset = 1000 0\% -\/ 100\% will be from 1000 to 2000 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{pwm_8h_a1e8fdae3fd7118582ffa427dad05b6e1}\label{pwm_8h_a1e8fdae3fd7118582ffa427dad05b6e1}} 
+\index{pwm.\+h@{pwm.\+h}!pwm\+\_\+init@{pwm\+\_\+init}}
+\index{pwm\+\_\+init@{pwm\+\_\+init}!pwm.\+h@{pwm.\+h}}
+\subsubsection{\texorpdfstring{pwm\+\_\+init()}{pwm\_init()}}
+{\footnotesize\ttfamily void pwm\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Inits pwm pins for servo and brushless motors \mbox{\Hypertarget{pwm_8h_ac36c296f980acc61f5959d1c6ded84ef}\label{pwm_8h_ac36c296f980acc61f5959d1c6ded84ef}} 
+\index{pwm.\+h@{pwm.\+h}!servo\+\_\+pwm\+\_\+set@{servo\+\_\+pwm\+\_\+set}}
+\index{servo\+\_\+pwm\+\_\+set@{servo\+\_\+pwm\+\_\+set}!pwm.\+h@{pwm.\+h}}
+\subsubsection{\texorpdfstring{servo\+\_\+pwm\+\_\+set()}{servo\_pwm\_set()}}
+{\footnotesize\ttfamily void servo\+\_\+pwm\+\_\+set (\begin{DoxyParamCaption}\item[{int8\+\_\+t}]{servo\+\_\+num,  }\item[{uint8\+\_\+t}]{degrees }\end{DoxyParamCaption})}
+
+
+
+Sets duty cycle of pwm servo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em servo\+\_\+num} & -\/ number of desired servo \\
+\hline
+{\em degrees} & -\/ angle to go, it can be restricted with M\+AX and M\+IN parameters defined in \mbox{\hyperlink{actuator_8h_source}{actuator.\+h}}\\
+\hline
+\end{DoxyParams}
+Pusle width -\/$>$ 20 ms Duty cycle -\/$>$ 0.\+5 to 2.\+5 ms \mbox{\Hypertarget{pwm_8h_a968c314be24f7043eeff034ebf7c4a03}\label{pwm_8h_a968c314be24f7043eeff034ebf7c4a03}} 
+\index{pwm.\+h@{pwm.\+h}!timer1\+\_\+init@{timer1\+\_\+init}}
+\index{timer1\+\_\+init@{timer1\+\_\+init}!pwm.\+h@{pwm.\+h}}
+\subsubsection{\texorpdfstring{timer1\+\_\+init()}{timer1\_init()}}
+{\footnotesize\ttfamily void timer1\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Initialisation for 16-\/bit Timer1 \mbox{\Hypertarget{pwm_8h_a6d0ecff8ad2f92e636ffa15e06725690}\label{pwm_8h_a6d0ecff8ad2f92e636ffa15e06725690}} 
+\index{pwm.\+h@{pwm.\+h}!timer3\+\_\+init@{timer3\+\_\+init}}
+\index{timer3\+\_\+init@{timer3\+\_\+init}!pwm.\+h@{pwm.\+h}}
+\subsubsection{\texorpdfstring{timer3\+\_\+init()}{timer3\_init()}}
+{\footnotesize\ttfamily void timer3\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Initialisation for 16-\/bit Timer3 

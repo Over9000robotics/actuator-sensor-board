@@ -1,0 +1,70 @@
+\hypertarget{usart0_8c}{}\section{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/usart0.c File Reference}
+\label{usart0_8c}\index{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/usart0.\+c@{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/usart0.\+c}}
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}usart0.\+h\char`\"{}}\newline
+Include dependency graph for usart0.\+c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{usart0_8c_ad5f1fc273737e3943d1b9a9893538bc0}\label{usart0_8c_ad5f1fc273737e3943d1b9a9893538bc0}} 
+\#define {\bfseries C\+L\+O\+C\+K\+\_\+\+FQ}~(16000000) /$\ast$$\ast$ External oscilator clock frequency $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{usart0_8c_a05e9cea80c064d4c11f0de075ac756a1}{U\+S\+A\+R\+T0\+\_\+init}} (uint32\+\_\+t baud)
+\begin{DoxyCompactList}\small\item\em Uart0 configuring async, no parity, 1 stop bit, 8 bit data size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart0_8c_acd65f891dae08d1c36311f35279f82cd}{U\+S\+A\+R\+T0\+\_\+transmit}} (unsigned char data)
+\begin{DoxyCompactList}\small\item\em Uart0 transmit byte. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{usart0_8c_ad1fdd87c01aed380a0871f3b7eab97f0}{U\+S\+A\+R\+T0\+\_\+receive}} (void)
+\begin{DoxyCompactList}\small\item\em Uart0 read received byte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{usart0_8c_a05e9cea80c064d4c11f0de075ac756a1}\label{usart0_8c_a05e9cea80c064d4c11f0de075ac756a1}} 
+\index{usart0.\+c@{usart0.\+c}!U\+S\+A\+R\+T0\+\_\+init@{U\+S\+A\+R\+T0\+\_\+init}}
+\index{U\+S\+A\+R\+T0\+\_\+init@{U\+S\+A\+R\+T0\+\_\+init}!usart0.\+c@{usart0.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T0\+\_\+init()}{USART0\_init()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T0\+\_\+init (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{baud }\end{DoxyParamCaption})}
+
+
+
+Uart0 configuring async, no parity, 1 stop bit, 8 bit data size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em desired} & baud rate, double speed mode \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{usart0_8c_ad1fdd87c01aed380a0871f3b7eab97f0}\label{usart0_8c_ad1fdd87c01aed380a0871f3b7eab97f0}} 
+\index{usart0.\+c@{usart0.\+c}!U\+S\+A\+R\+T0\+\_\+receive@{U\+S\+A\+R\+T0\+\_\+receive}}
+\index{U\+S\+A\+R\+T0\+\_\+receive@{U\+S\+A\+R\+T0\+\_\+receive}!usart0.\+c@{usart0.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T0\+\_\+receive()}{USART0\_receive()}}
+{\footnotesize\ttfamily unsigned char U\+S\+A\+R\+T0\+\_\+receive (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Uart0 read received byte. 
+
+\begin{DoxyReturn}{Returns}
+received byte 
+\end{DoxyReturn}
+\mbox{\Hypertarget{usart0_8c_acd65f891dae08d1c36311f35279f82cd}\label{usart0_8c_acd65f891dae08d1c36311f35279f82cd}} 
+\index{usart0.\+c@{usart0.\+c}!U\+S\+A\+R\+T0\+\_\+transmit@{U\+S\+A\+R\+T0\+\_\+transmit}}
+\index{U\+S\+A\+R\+T0\+\_\+transmit@{U\+S\+A\+R\+T0\+\_\+transmit}!usart0.\+c@{usart0.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T0\+\_\+transmit()}{USART0\_transmit()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T0\+\_\+transmit (\begin{DoxyParamCaption}\item[{unsigned char}]{data }\end{DoxyParamCaption})}
+
+
+
+Uart0 transmit byte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ byte to transmit \\
+\hline
+\end{DoxyParams}

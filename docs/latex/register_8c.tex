@@ -1,0 +1,30 @@
+\hypertarget{register_8c}{}\section{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/register.c File Reference}
+\label{register_8c}\index{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/register.\+c@{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/register.\+c}}
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}register.\+h\char`\"{}}\newline
+Include dependency graph for register.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{register_8c_a005f96b093dec87152c7403fb8218135}{register\+\_\+16\+\_\+write}} (volatile uint16\+\_\+t $\ast$adress, uint16\+\_\+t value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{register_8c_a005f96b093dec87152c7403fb8218135}\label{register_8c_a005f96b093dec87152c7403fb8218135}} 
+\index{register.\+c@{register.\+c}!register\+\_\+16\+\_\+write@{register\+\_\+16\+\_\+write}}
+\index{register\+\_\+16\+\_\+write@{register\+\_\+16\+\_\+write}!register.\+c@{register.\+c}}
+\subsubsection{\texorpdfstring{register\+\_\+16\+\_\+write()}{register\_16\_write()}}
+{\footnotesize\ttfamily void register\+\_\+16\+\_\+write (\begin{DoxyParamCaption}\item[{volatile uint16\+\_\+t $\ast$}]{adress,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Writes data to 16-\/bit register 
+\begin{DoxyParams}{Parameters}
+{\em adress} & -\/ adress of register where data has to be saved \\
+\hline
+{\em value} & -\/ value of data \\
+\hline
+\end{DoxyParams}

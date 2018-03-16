@@ -1,0 +1,30 @@
+\section{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/usart0.h File Reference}
+\label{usart0_8h}\index{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/usart0.\+h@{/home/djordje/\+Desktop/actuator-\/sensor-\/board/src/usart0.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for usart0.\+h\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ U\+S\+A\+R\+T0\+\_\+init} (uint32\+\_\+t baud)
+\item 
+\mbox{\label{usart0_8h_acd65f891dae08d1c36311f35279f82cd}} 
+void {\bfseries U\+S\+A\+R\+T0\+\_\+transmit} (unsigned char data)
+\item 
+\mbox{\label{usart0_8h_ad1fdd87c01aed380a0871f3b7eab97f0}} 
+unsigned char {\bfseries U\+S\+A\+R\+T0\+\_\+receive} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{usart0_8h_a05e9cea80c064d4c11f0de075ac756a1}} 
+\index{usart0.\+h@{usart0.\+h}!U\+S\+A\+R\+T0\+\_\+init@{U\+S\+A\+R\+T0\+\_\+init}}
+\index{U\+S\+A\+R\+T0\+\_\+init@{U\+S\+A\+R\+T0\+\_\+init}!usart0.\+h@{usart0.\+h}}
+\subsubsection{U\+S\+A\+R\+T0\+\_\+init()}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T0\+\_\+init (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{baud }\end{DoxyParamCaption})}
+
+Uart0 configuring for communication with dynamixel ax-\/12a servo motor. 
+\begin{DoxyParams}{Parameters}
+{\em desired} & baud rate, double speed mode \\
+\hline
+\end{DoxyParams}
