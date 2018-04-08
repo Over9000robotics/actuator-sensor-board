@@ -17,7 +17,7 @@ volatile static uint16_t* servo2 = &OCR1B; //PB3 connector
 volatile static uint16_t* servo3 = &OCR1C; //PB4 connector
 
 /********************************************************************
- *  PWM on 8-bit timer2 not implemented								*
+ * @note PWM on 8-bit timer2 not implemented						*
  * On our robot, there would be three pwm servos					*
  * Fourth pwm connector could be universal for some backup systems  *
  ********************************************************************/
@@ -138,7 +138,7 @@ void pwm_init(void)
 	TCCR2A = 0x6C;
 	OCR2A = 0;
 
-/***************OC1A***********************************************/
+/***************OC1A******/
 	//fast pwm on OC1A pin (PB2 - PWM2)
 	DDRB |= (1 << PB5); //enable pin as output
 	OCR1AH = 0;
@@ -148,7 +148,7 @@ void pwm_init(void)
 //	TCCR1A &= ~(1 << COM1A0);
 	TCCR1A |= (1 << COM1A1);
 
-/************** OC1B **************************************************/
+/************** OC1B ******/
 	DDRB |= (1 << PB6);
 	OCR1BH = 0;
 	OCR1BL = 0;
@@ -157,7 +157,7 @@ void pwm_init(void)
 //	TCCR1A |= (1 << COM1B1);
 //	TCCR1A &= ~(1 << COM1B0);
 
-/************* OC1C **************************************************/
+/************* OC1C ********/
 	DDRB |= (1 << PB7);
 	OCR1CH = 0;
 	OCR1CL = 0;
@@ -166,7 +166,7 @@ void pwm_init(void)
 //	TCCR1A |= (1 << COM1C1);
 //	TCCR1A &= ~(1 << COM1C0);
 
-/*********OC3C - PBR1*************************************************/
+/*********OC3C - PBR1********/
 //OC3C
 	DDRE |= (1 << PE5);
 	TCCR3A |= (1 << COM3C1);
@@ -174,7 +174,7 @@ void pwm_init(void)
 	OCR3CH = 0;
 	OCR3CL = 0;
 	
-/********OC3B - PBR2**************************************************/
+/********OC3B - PBR2**********/
 	DDRE |= (1 << PE4);
 	TCCR3A |= (1 << COM3B1);
 

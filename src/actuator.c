@@ -1,7 +1,6 @@
 /* 
  * @todo Make angle limitation for every servo
  */
-
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
