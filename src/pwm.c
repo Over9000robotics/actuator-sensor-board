@@ -11,7 +11,6 @@
 #include "communicator.h"
 #include "register.h"
 
-
 volatile static uint16_t* servo1 = &OCR1A; //PB2 connector
 volatile static uint16_t* servo2 = &OCR1B; //PB3 connector
 volatile static uint16_t* servo3 = &OCR1C; //PB4 connector
@@ -28,6 +27,34 @@ volatile static uint16_t* second_brushless = &OCR3B; //PBR2
 
 static uint32_t icr3_temp;
 static uint32_t icr1_temp;
+
+void dc_rotate(unsigned char direction)
+{
+	switch (direction){
+		case CLOCKWISE:
+		{
+			DDRC |= (1 << PC0); //PC0 is output, DIR on DC Motor4 Click
+			OCR2A = 250;
+			PORTC |= (1 << PC0);
+			break;
+		}
+		case C_CLOCKWISE:
+		{
+			DDRC |= (1 << PC0); //PC0 is output, DIR on DC Motor4 Click
+			OCR2A = 250;
+			PORTC &= ~(1 << PC0);
+			break;
+		}
+		case DC_STOP:
+		{
+			DDRC &= ~(1 << PC0); //PC0 is output, DIR on DC Motor4 Click
+			OCR2A = 0;
+			break;
+		}
+			
+	}
+}
+
 
 /**
  * @brief Sets duty cycle on desired brushless

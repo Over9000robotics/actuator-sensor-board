@@ -20,6 +20,7 @@ void pbr_pwm_set(uint8_t brushless_num, uint8_t procent);
 
 void servo_pwm_set(int8_t servo_num, uint8_t degrees);
 
+void dc_rotate(unsigned char direction);
 
 void timer1_init(void);
 void timer3_init(void);
