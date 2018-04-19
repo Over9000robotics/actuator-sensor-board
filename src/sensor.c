@@ -18,9 +18,6 @@ static t_sensor sensors[NUM_OF_SENS]; /** Array of sensors where sensors output 
 static t_sensor temp[NUM_OF_SENS]; /** Temporary array of sensors data */
 static uint8_t state_changed_flag = 1;
 
-//Memristor board
-// P1 -> PA0
-// P2 -> PA1
 
 /**
  * @brief Inits pin and value for sensors
@@ -30,12 +27,18 @@ void sensors_init(void)
 {
 	DDRA |= (0 << PA7); //sens1 -> P1
 	DDRA |= (0 << PA6); //sens2 -> P2
+	DDRA |= (0 << PA5); //sens3 -> P3
+	DDRA |= (0 << PA4); //sens4 -> P11
 
-	sensors[0].pin = 7; //try with PA7
+	sensors[0].pin = 7;
 	sensors[1].pin = 6;
+	sensors[2].pin = 5;
+	sensors[3].pin = 4;
 
 	sensors[0].value = 0;
 	sensors[1].value = 0;
+	sensors[2].value = 0;
+	sensors[3].value = 0;
 }
 
 /**
@@ -48,7 +51,9 @@ void update_sensor_status(void)
 {
 	temp[0].value = PINA & (1 << sensors[0].pin);
 	temp[1].value = PINA & (1 << sensors[1].pin);
-
+	temp[2].value = PINA & (1 << sensors[2].pin);
+	temp[3].value = PINA & (1 << sensors[3].pin);
+	
 	if(temp[0].value > 0)
 		temp[0].value = 0xFF;
 	else
@@ -58,6 +63,16 @@ void update_sensor_status(void)
 		temp[1].value = 0xFF;
 	else
 		temp[1].value = 0;
+		
+	if(temp[2].value > 0)
+		temp[2].value = 0xFF;
+	else
+		temp[2].value = 0;
+		
+	if(temp[3].value > 0)
+		temp[3].value = 0xFF;
+	else
+		temp[3].value = 0;
 
 	int i;
 	for(i = 0; i < NUM_OF_SENS; i++)

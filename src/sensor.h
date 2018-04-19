@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 
-#define NUM_OF_SENS 2
+#define NUM_OF_SENS 4
 
 #define SENSOR_ASK 'S'
 
